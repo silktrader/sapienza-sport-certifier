@@ -1,0 +1,57 @@
+<div class="wizard">
+
+  <p>Fill in basic details and store them locally, so to avoid having to compile a new form at every submission.</p>
+
+  <mat-stepper orientation="vertical" linear="true" #stepper>
+    <mat-step [stepControl]="nameGroup">
+      <form [formGroup]="nameGroup">
+        <ng-template matStepLabel>Anagraphic Data</ng-template>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="ex. Barbara" formControlName="name" required>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Surname</mat-label>
+            <input matInput placeholder="ex. Liu" formControlName="surname" required>
+          </mat-form-field>
+        </div>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="contactGroup">
+      <form [formGroup]="contactGroup">
+        <ng-template matStepLabel>Contact Details</ng-template>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" placeholder="Ex. hotbabe@org.asm" required>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Phone Number</mat-label>
+            <input matInput formControlName="phone" placeholder="Ex. 347 24904955" required>
+          </mat-form-field>
+        </div>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>Data can be saved for future submissions. It can be erased at any time by clicking on the relevant button.</p>
+      <div>
+        <!-- <button mat-button matStepperPrevious>Save Data</button> -->
+        <button mat-button (click)="saveData()">Save Data</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</div>
